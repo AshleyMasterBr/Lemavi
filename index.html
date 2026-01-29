@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIXEL STRAT // PROTOCOLO DE RECUPERAÇÃO LEMAVI</title>
+    <style>
+        :root {
+            --bg: #050507;
+            --card: #0f0f12;
+            --primary: #7000ff;
+            --secondary: #00f2ff;
+            --accent: #ff0055;
+            --text-main: #ffffff;
+            --text-dim: #8a8a8e;
+            --success: #00ff88;
+            --border: #222226;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* Header Estilo Cyber */
+        .header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-title h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-tag {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--secondary);
+            font-weight: 900;
+        }
+
+        /* Grid de Cards */
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .card-label {
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        /* Tabela Estratégica */
+        .strategy-box {
+            background: var(--card);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .box-header {
+            background: rgba(112, 0, 255, 0.1);
+            padding: 15px 25px;
+            border-bottom: 1px solid var(--border);
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .table-responsive {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #1a1a1f;
+            font-size: 0.9rem;
+        }
+
+        .status {
+            padding: 5px 12px;
+            border-radius: 2px;
+            font-size: 0.65rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .status-danger { background: rgba(255, 0, 85, 0.1); color: var(--accent); border: 1px solid var(--accent); }
+        .status-success { background: rgba(0, 255, 136, 0.1); color: var(--success); border: 1px solid var(--success); }
+
+        /* Seção Projeção de ROI */
+        .roi-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(145deg, #0f0f12 0%, #050507 100%);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+        }
+
+        .roi-content h2 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: var(--success);
+        }
+
+        .roi-content p {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .roi-metric {
+            border-left: 2px solid var(--success);
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .metric-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #fff;
+            display: block;
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--success);
+        }
+
+        .probability-tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+            padding: 2px 8px;
+        }
+
+        @media (max-width: 768px) {
+            .roi-section { grid-template-columns: 1fr; }
+            .grid-stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="header-title">
+            <span class="header-tag">DATA-DRIVEN DECISION // PIXEL STRAT</span>
+            <h1>Relatório de Auditoria e Pivot</h1>
+        </div>
+        <div style="text-align: right;">
+            <span class="card-label">Status do Protocolo</span>
+            <span class="status status-success" style="font-size: 1rem;">Otimização Ativa</span>
+        </div>
+    </div>
+
+    <div class="grid-stats">
+        <div class="card">
+            <span class="card-label">Investimento em Auditoria</span>
+            <span class="card-value">R$ 300,00</span>
+            <span style="font-size: 0.6rem; color: var(--accent);">Fase de Mapeamento de Leilão Concluída</span>
+        </div>
+        <div class="card">
+            <span class="card-label">Período de Validação</span>
+            <span class="card-value">07 Dias</span>
+            <span style="font-size: 0.6rem; color: var(--secondary);">Ciclo de Aprendizado Machine Learning</span>
+        </div>
+        <div class="card">
+            <span class="card-label">Capital Remanescente</span>
+            <span class="card-value">R$ 600,00</span>
+            <span style="font-size: 0.6rem; color: var(--success);">Alocação em Zonas de Alto ROI</span>
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="box-header">Análise de Eficiência Geo-Localizada</div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Região Analisada</th>
+                        <th>Status do Leilão</th>
+                        <th>Impacto no Orçamento</th>
+                        <th>Ação de Gestão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pinheiros / Barra Funda</strong></td>
+                        <td><span class="status status-danger">Saturado</span></td>
+                        <td>Alto CPC (Concorrência de Incorporadoras)</td>
+                        <td><strong>Suspensão Imediata</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lapa / Perdizes</strong></td>
+                        <td><span class="status status-success">Oceano Azul</span></td>
+                        <td>Custo de Aquisição Balanceado</td>
+                        <td><strong>Foco de Escala</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pirituba / Jaraguá</strong></td>
+                        <td><span class="status status-success">Alta Conversão</span></td>
+                        <td>Volume de leads em ascensão</td>
+                        <td><strong>Prioridade de Verba</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="roi-section">
+        <div class="roi-content">
+            <h2>Por que este Pivot é Vital?</h2>
+            <p>
+                Os primeiros R$ 300,00 gastos não foram uma perda, mas sim uma <strong>Auditoria de Blindagem</strong>. Identificamos que competir em bairros como Pinheiros com R$ 30/dia é matematicamente ineficiente contra budgets de incorporadoras. 
+                <br><br>
+                Ao detectar esse gargalo cedo, salvamos os R$ 600,00 restantes de serem consumidos por cliques caros e sem conversão. Agora, o valor será injetado onde o leilão é favorável à Lemavi.
+            </p>
+        </div>
+        <div class="roi-metrics">
+            <div class="roi-metric">
+                <span class="metric-title">Projeção de Aumento de Leads</span>
+                <span class="metric-value">+45% a 60%</span>
+                <br><span class="probability-tag">Alta Probabilidade</span>
+            </div>
+            <div class="roi-metric">
+                <span class="metric-title">Redução de Custo por Lead (CPL)</span>
+                <span class="metric-value">-35%</span>
+                <br><span class="probability-tag">Otimização Geo-Focalizada</span>
+            </div>
+            <div class="roi-metric">
+                <span class="metric-title">Aumento Estimado em Orçamentos</span>
+                <span class="metric-value">2.5x</span>
+                <br><span class="probability-tag">Impacto em 15 Dias</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center; color: var(--text-dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">
+        Protocolo de Inteligência Gerado por Legado Performance // 2026
+    </div>
+</div>
+
+</body>
+</html>

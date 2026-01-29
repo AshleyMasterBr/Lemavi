@@ -1,42 +1,251 @@
-<table style="width:100%; border-collapse: collapse; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-  <thead>
-    <tr style="background-color: #6200ea; text-align: left;">
-      <th style="padding: 15px; border: 1px solid #333;">PILAR ESTRATÉGICO</th>
-      <th style="padding: 15px; border: 1px solid #333;">AÇÃO TÁTICA</th>
-      <th style="padding: 15px; border: 1px solid #333;">PROBABILIDADE</th>
-      <th style="padding: 15px; border: 1px solid #333;">STATUS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #333; font-weight: bold;">Higienização de Verba</td>
-      <td style="padding: 12px; border: 1px solid #333;">Exclusão de Pinheiros/Barra Funda (Zonas de alto atrito e leilão inflacionado).</td>
-      <td style="padding: 12px; border: 1px solid #333; color: #00e676;">95% (Crítico)</td>
-      <td style="padding: 12px; border: 1px solid #333;"><span style="background-color: #d32f2f; padding: 4px 8px; border-radius: 4px; font-size: 12px;">IMEDIATO</span></td>
-    </tr>
-    <tr style="background-color: #262626;">
-      <td style="padding: 12px; border: 1px solid #333; font-weight: bold;">Expansão de Domínio</td>
-      <td style="padding: 12px; border: 1px solid #333;">Abertura total ZN e ZO. Foco em Perdizes, Lapa, Santana e Freguesia.</td>
-      <td style="padding: 12px; border: 1px solid #333; color: #00e676;">85%</td>
-      <td style="padding: 12px; border: 1px solid #333;"><span style="background-color: #ff9100; padding: 4px 8px; border-radius: 4px; font-size: 12px;">EM EXECUÇÃO</span></td>
-    </tr>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #333; font-weight: bold;">Segmentação Híbrida</td>
-      <td style="padding: 12px; border: 1px solid #333;">Cruzamento de Cargos (Autoridade) + Interesses (Intenção de Compra/Reforma).</td>
-      <td style="padding: 12px; border: 1px solid #333; color: #00e676;">90%</td>
-      <td style="padding: 12px; border: 1px solid #333;"><span style="background-color: #00c853; padding: 4px 8px; border-radius: 4px; font-size: 12px;">ATIVADO</span></td>
-    </tr>
-    <tr style="background-color: #262626;">
-      <td style="padding: 12px; border: 1px solid #333; font-weight: bold;">Isca de Conversão 1</td>
-      <td style="padding: 12px; border: 1px solid #333;">Cozinha Planejada R$ 8k. Foco em volume de leads e entrada de funil.</td>
-      <td style="padding: 12px; border: 1px solid #333; color: #00e676;">80%</td>
-      <td style="padding: 12px; border: 1px solid #333;"><span style="background-color: #2979ff; padding: 4px 8px; border-radius: 4px; font-size: 12px;">ESCANEANDO</span></td>
-    </tr>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #333; font-weight: bold;">Isca de Conversão 2</td>
-      <td style="padding: 12px; border: 1px solid #333;">Studio Planejado R$ 29k. Foco em investidores e ticket médio alto.</td>
-      <td style="padding: 12px; border: 1px solid #333; color: #ffeb3b;">65% (Nicho)</td>
-      <td style="padding: 12px; border: 1px solid #333;"><span style="background-color: #2979ff; padding: 4px 8px; border-radius: 4px; font-size: 12px;">ESCANEANDO</span></td>
-    </tr>
-  </tbody>
-</table>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>PIXEL STRAT - Relatório Lemavi</title>
+    <style>
+        :root {
+            --bg: #0a0a0c;
+            --card: #141417;
+            --primary: #6200ea;
+            --secondary: #00e5ff;
+            --accent: #ff007a;
+            --text: #e0e0e0;
+            --success: #00c853;
+            --warning: #ffd600;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dashboard {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .header {
+            border-left: 5px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .header span {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--primary);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .main-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid #333;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: var(--secondary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            background: #333;
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+
+        .pivot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .pivot-table th {
+            text-align: left;
+            padding: 12px;
+            font-size: 0.8rem;
+            color: #888;
+            border-bottom: 1px solid #333;
+        }
+
+        .pivot-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #222;
+        }
+
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .pill-critical { background: rgba(255, 0, 122, 0.1); color: var(--accent); border: 1px solid var(--accent); }
+        .pill-active { background: rgba(0, 200, 83, 0.1); color: var(--success); border: 1px solid var(--success); }
+        .pill-process { background: rgba(0, 229, 255, 0.1); color: var(--secondary); border: 1px solid var(--secondary); }
+
+        .analysis-text {
+            line-height: 1.6;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .probability-bar {
+            height: 8px;
+            background: #222;
+            border-radius: 4px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .probability-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <div class="header">
+        <span>STRATEGIC PIVOT v2.0 // LEGADO PERFORMANCE</span>
+        <h1>Lemavi Arquitetura</h1>
+    </div>
+
+    <div class="grid-stats">
+        <div class="stat-card">
+            <span class="stat-label">Investimento Fase 01</span>
+            <span class="stat-value">R$ 300,00</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Início da Operação</span>
+            <span class="stat-value">15/01/2026</span>
+        </div>
+        <div class="stat-card" style="border-color: var(--accent);">
+            <span class="stat-label">Status do Leilão</span>
+            <span class="stat-value" style="color: var(--accent);">SATURADO</span>
+        </div>
+    </div>
+
+    <div class="main-card">
+        <div class="section-title">Diagnóstico de Engenharia de Dados</div>
+        <p class="analysis-text">
+            Após 7 dias de veiculação, identificamos um <span class="highlight">Gargalo de Escalabilidade</span>. O teste A/B demonstrou que as regiões de <span class="highlight">Pinheiros e Barra Funda</span> estão agindo como drenos de orçamento. Nestas coordenadas, o CPM (Custo por Mil Impressões) é inflacionado por grandes incorporadoras, tornando o leilão inviável para budgets de R$ 30/dia. O tráfego nestas zonas é de alta qualidade, porém o custo de aquisição (CPA) é 3.4x superior à média da Zona Norte/Oeste.
+        </p>
+    </div>
+
+    <div class="main-card">
+        <div class="section-title">Plano de Guerra de Retomada</div>
+        <table class="pivot-table">
+            <thead>
+                <tr>
+                    <th>CAMADA ESTRATÉGICA</th>
+                    <th>AÇÃO TÁTICA // PIVOT</th>
+                    <th>PROBABILIDADE</th>
+                    <th>STATUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Infraestrutura</strong></td>
+                    <td>Migração de Conta (Litoral -> New Account)</td>
+                    <td>
+                        <span class="stat-label">Confiança: 100%</span>
+                        <div class="probability-bar"><div class="probability-fill" style="width: 100%;"></div></div>
+                    </td>
+                    <td><span class="status-pill pill-critical">EXECUTADO</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Geolocalização</strong></td>
+                    <td>Exclusão B. Funda/Pinheiros + Expansão ZN/ZO</td>
+                    <td>
+                        <span class="stat-label">Otimização: 88%</span>
+                        <div class="probability-bar"><div class="probability-fill" style="width: 88%;"></div></div>
+                    </td>
+                    <td><span class="status-pill pill-active">ATIVO</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Segmentação</strong></td>
+                    <td>Híbrido: Autoridade (Cargos) + Intenção (Reforma)</td>
+                    <td>
+                        <span class="stat-label">Conversão: 92%</span>
+                        <div class="probability-bar"><div class="probability-fill" style="width: 92%;"></div></div>
+                    </td>
+                    <td><span class="status-pill pill-process">DEPLOY</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="main-card">
+        <div class="section-title">Projeção de Performance</div>
+        <p class="analysis-text">
+            Com a higienização dos dados e o foco em regiões de <span class="highlight">Oceano Azul</span> (Lapa, Perdizes, Santana), prevemos uma redução de <span class="highlight">25% no CPL</span> já nas primeiras 72h. A verba remanescente de R$ 600,00 será concentrada em criativos de <span class="highlight">Retorno Direto</span> (Cozinha e Studio), forçando o algoritmo a priorizar leads prontos para orçamento técnico.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
